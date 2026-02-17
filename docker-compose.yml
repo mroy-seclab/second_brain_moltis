@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - API_KEY=${API_KEY:-dev-secret-key-change-me}
+      - DATABASE_URL=/app/data/brain.db
+      - DATA_DIR=/app/data
+    restart: unless-stopped
